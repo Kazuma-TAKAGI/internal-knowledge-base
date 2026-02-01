@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout}">
+
+<head>
+	<title>top page</title>
+	<div layout:fragment="content">
+		<form method="post" th:action="@{/login}">
+			username
+			<input type="text" name="username">
+			password
+			<input type="password" name="password">
+			<button type="submit">submit</button>"
+		</form>
+
+	</div>
+
+</html>
