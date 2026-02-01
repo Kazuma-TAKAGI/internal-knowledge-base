@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <meta charset="UTF-8">
+    <title layout:title-pattern="$CONTENT_TITLE | Knowledge App">
+        Knowledge App
+    </title>
+
+    <!-- Bootstrap CSS -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link th:href="@{/css/custom.css}" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+<!-- ===== ナビバー ===== -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{/}">
+            Knowledge App
+        </a>
+
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+
+                <!-- ログイン時のみ表示（後でSecurityと連携） -->
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/questions}">
+                        質問一覧
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/questions/new}">
+                        質問投稿
+                    </a>
+                </li>
+
+                <!-- 仮：ログアウト -->
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/logout}">
+                        ログアウト
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- ===== メインコンテンツ ===== -->
+<main class="container mt-4">
+
+    <!-- アラート表示領域 -->
+    <div th:if="${successMessage}" class="alert alert-success">
+        <span th:text="${successMessage}"></span>
+    </div>
+
+    <div th:if="${errorMessage}" class="alert alert-danger">
+        <span th:text="${errorMessage}"></span>
+    </div>
+
+    <!-- 各画面の内容 -->
+    <div layout:fragment="content">
+        <!-- ここに各画面が差し込まれる -->
+    </div>
+
+</main>
+
+<!-- Bootstrap JS -->
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+</body>
+</html>
