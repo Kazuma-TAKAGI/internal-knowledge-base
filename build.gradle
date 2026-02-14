@@ -49,3 +49,15 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+bootJar{
+	archiveFileName = 'internal-knowledge-base.jar'
+}
+springBoot {
+	mainClass = 'com.internalknowledgebase.InternalKnowledgeBaseApplication'
+}
+bootRun {
+	jvmArgs = [
+			"-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005"
+	]
+}
